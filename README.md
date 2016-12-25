@@ -43,12 +43,12 @@ src/app.ts
     import { EVENTS_ISK }    from './events/inversify.config';
     import { EventService }  from './events/services/event.service';
     import { EVENTS_ISM }    from './events';
+    import { inject }        from 'inversify-global-container';
 
     container.load(
         EVENTS_ISM,
     );
 
-    import { inject } from "inversify-global-container";
 
     class SomeObject
     {
