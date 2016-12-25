@@ -1,0 +1,11 @@
+node_modules
+reports
+typings
+.idea/
+.vscode/
+.web/*
+!web/.gitkeep
+dist_dev
+apidoc/apidoc
+bin
+npm-debug.log
