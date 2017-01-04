@@ -23,14 +23,19 @@ src/events/services/event.service.ts
     }
 ```
 
+src/events/key.config.ts
+```ts
+export const EVENTS_ISK = {
+    EventApiS: Symbol('events.EventsApiService'),
+    EventS: Symbol('events.EventsService'),
+};
+```
+
 src/events/inversify.config.ts
 ```ts
     import { EventService } from './services/event.service';
     import { ContainerModule, interfaces } from 'inversify';
-
-    export const EVENTS_ISK = {
-        EventS: Symbol('event.EventService'),
-    };
+    import { EVENTS_ISK } from './key.config';
 
     export const EVENTS_ISM = new ContainerModule((bind: interfaces.Bind) => {
         bind<EventService>(EVENTS_ISK.EventS).to(EventService);
@@ -40,9 +45,9 @@ src/events/inversify.config.ts
 src/app.ts
 ```ts
     import { container }     from 'inversify-global-container';
-    import { EVENTS_ISK }    from './events/inversify.config';
+    import { EVENTS_ISK }    from './events/key.config';
     import { EventService }  from './events/services/event.service';
-    import { EVENTS_ISM }    from './events';
+    import { EVENTS_ISM }    from './events/inversify.config';
     import { inject }        from 'inversify-global-container';
 
     container.load(
