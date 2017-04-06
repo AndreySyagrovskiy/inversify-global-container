@@ -57,7 +57,7 @@ src/app.ts
 
     class SomeObject
     {
-        inject(EVENTS_ISK.EventS) eventService: EventService;
+        @inject(EVENTS_ISK.EventS) eventService: EventService;
     }
 
     let someObject = new SomeObject();
